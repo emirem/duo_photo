@@ -1,0 +1,194 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+body, html {
+  width: 100vw;
+  height: 100vh;
+  background-color: #f3f3f3;
+}
+
+.upload-area {
+  display: flex;
+  flex-flow: column;
+  flex-shrink: 0;
+  height: 100%;
+  overflow: hidden;
+
+  transition: height 300ms ease-in-out;
+}
+
+.upload-area.drag-enter {
+  box-shadow: inset 0px 0px 40px 0px #000;
+}
+
+.upload-area.hidden {
+  height: 0;
+}
+
+.upload-area input {
+  width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+
+.upload-area label {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  
+  height: 100%;
+
+  padding-top: 200px;
+  
+  cursor: pointer;
+
+  background-image: url('../assets/upload-icon.svg');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 200px 200px;
+
+  color: #157efb;
+  font-size: 32px;
+}
+
+.preview-area {
+  display: flex;
+  flex-flow: column;
+  flex-shrink: 0;
+  align-items: center;
+
+  overflow: hidden;
+
+  height: 800px;
+  transition: height 300ms ease-in-out;
+  background-color: #f3f3f3;
+}
+
+.preview-area .images {
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+  align-items: flex-start;
+
+  position: relative;
+
+  max-width: 1400px;
+
+  background-color: #fff;
+}
+
+.preview-area .images .image {
+  min-height: 700px;
+  min-width: 700px;
+
+  background-repeat: no-repeat;
+  background-position: 0 0;
+  background-size: 200%;
+
+  transition: opacity 300ms ease-in-out;
+}
+
+.preview-area .images .image:nth-child(1) {
+  border-right: 8px solid #FFF;
+}
+
+.preview-area .images .image.blurred {
+  opacity: 0.5;
+}
+
+.preview-area.hidden {
+  height: 0;
+}
+
+.preview-area .actions {
+  display: flex;
+  flex-flow: row;
+  justify-content: flex-start;
+  align-items: flex-end;
+
+  margin-top: 10px;
+
+  max-width: 1400px;
+  width: 100%;
+}
+
+.preview-area .actions .slider-container {
+  width: 300px;
+}
+
+.preview-area .actions .slider {
+  -webkit-appearance: none;  /* Override default CSS styles */
+  appearance: none;
+  
+  width: 100%;
+  height: 25px;
+
+  margin-top: 5px;
+  
+  background: #d3d3d3;
+  outline: none;
+  opacity: 0.7;
+  transition: opacity .2s;
+}
+
+/* Mouse-over effects */
+.preview-area .actions .slider:hover {
+  opacity: 1;
+}
+
+.preview-area .actions .slider:disabled,
+.preview-area .actions .slider:disabled::-webkit-slider-thumb {
+  cursor: not-allowed;
+}
+
+.preview-area .actions .slider::-webkit-slider-thumb {
+  -webkit-appearance: none; /* Override default look */
+  appearance: none;
+  
+  width: 25px;
+  height: 25px;
+  
+  background: #4CAF50;
+  cursor: pointer;
+}
+
+.preview-area .actions .save-btn {
+  background: transparent;
+  outline: none;
+  
+  border: 2px solid #18561a;
+  border-radius: 5px;
+
+  padding: 10px 20px;
+  
+  color: #18561a;
+  text-transform: uppercase;
+
+  cursor: pointer;
+  transition: all 150ms ease-in-out;
+}
+
+.preview-area .actions .save-btn:disabled {
+  border: 2px solid #c7c7c7;
+  color: #c7c7c7;
+}
+
+.preview-area .actions .save-btn:hover {
+  background-color: #18561a;
+  color: #FFF;
+}
+
+.preview-area .swap-wrapper {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  margin-left: 10px;
+}
